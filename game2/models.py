@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Teams(models.Model):
     name = models.TextField(verbose_name='队伍名称', )
-    logo = models.SlugField(verbose_name='队伍头像', blank=True, default='')
+    logo = models.URLField(verbose_name='队伍头像', blank=True, default='http://src.1zlab.com/gac/gac-logo.jpg')
     number = models.IntegerField(verbose_name='队伍编号', blank=True, default=0)
 
     score_round1 = models.FloatField(

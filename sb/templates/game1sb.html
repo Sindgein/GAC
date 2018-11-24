@@ -1,0 +1,54 @@
+game<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.loli.net/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/muse-ui@3.0.1/dist/muse-ui.min.css">
+    <link href="https://cdnjs.loli.net/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Roboto:300,400,500,700,400italic">
+    {#    框架js#}
+    <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/muse-ui@3.0.1/dist/muse-ui.min.js"></script>
+    <title>2018之江全球人工智能大赛 后台</title>
+    <style>
+        body{
+            background: black
+        }
+    </style>
+</head>
+<body>
+    
+    <div id='app' style="width:100vw;height:100vh">
+        <div id="particles-js" class="particles"></div>
+        <input type="file" name="file" ref="fileinput" style="display: none">
+        <mu-flex style="width:100vw;height:100vh;position: fixed;left:0;top:0;" direction="column"  justify-content="center" align-items="center">     
+            <h1 style="color:aliceblue;font-size:40px">视频识别问答</h1>
+            <h1 style="color:aliceblue">当前轮数 : [[this.round]]</h1>
+            <mu-paper style="height:auto;">
+                <mu-data-table :columns="columns" :data="team_info" style="width:100%;height:100%;">
+                    <template slot-scope="scope">
+                        <td>[[scope.row.number]]</td>
+                        <td>[[scope.row.score]]</td>
+                        <td>[[scope.row.round_score]]</td>
+                        <td>[[scope.row.rank]]</td>
+                        <td>[[scope.row.round_rank]]</td>
+                    </template>
+                </mu-data-table>
+            </mu-paper>
+    
+            <mu-flex>
+                <mu-button large color="secondary" @click='btnclick' style="margin:12px" >选择TXT</mu-button>
+                <mu-button large color="primary" @click='upload' style="margin:12px">上传服务器</mu-button>
+            </mu-flex>
+        </mu-flex>
+    </div>
+
+    {% load static %}
+    <script src="{% static 'particles.js' %}"></script>
+    <script src="{% static 'game1sb.js' %}"></script>
+</body>
+</html>

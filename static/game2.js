@@ -19,14 +19,14 @@ var app = new Vue({
     },
     methods: {
       get_round() {
-        $.get('/api/race1/get/round/').then(r => {
+        $.get('/game2/api/get/round/').then(r => {
           this.round = r.data.round;
           this.get_updates()
         })
       },
       
       get_updates() {
-        $.get('/api/race1/update/?round=' + this.round).then(
+        $.get('/game2/api/get/ranlist/?round=' + this.round).then(
           r => {
             this.teams = r.data.team_infos;
             this.round = r.data.round;

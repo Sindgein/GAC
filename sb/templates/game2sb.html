@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+game<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,10 +25,8 @@
     <div id='app' style="width:100vw;height:100vh">
         <div id="particles-js" class="particles"></div>
         <input type="file" name="file" ref="fileinput" style="display: none">
-        <!-- <mu-paper :z-depth="1">
-            
-        </mu-paper> -->
         <mu-flex style="width:100vw;height:100vh;position: fixed;left:0;top:0;" direction="column"  justify-content="center" align-items="center">     
+            <h1 style="color:aliceblue;font-size:40px">零样本图像识别</h1>
             <h1 style="color:aliceblue">当前轮数 : [[this.round]]</h1>
             <mu-paper style="height:auto;">
                 <mu-data-table :columns="columns" :data="team_info" style="width:100%;height:100%;">
@@ -51,6 +49,6 @@
 
     {% load static %}
     <script src="{% static 'particles.js' %}"></script>
-    <script src="{% static 'sb.js' %}"></script>
+    <script src="{% static 'game2sb.js' %}"></script>
 </body>
 </html>
