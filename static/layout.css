@@ -78,6 +78,7 @@
     margin: 16px;
     width: 20%;
     background: #64b5f655;
+    border-radius:15px; 
 }
 
 .rank-title {
