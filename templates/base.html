@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+    <script src="https://cdnjs.loli.net/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/muse-ui@3.0.1/dist/muse-ui.min.css">
+    <link href="https://cdnjs.loli.net/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Roboto:300,400,500,700,400italic">
+
+    {#    自定义css#}
+    <link rel="stylesheet" href="/static/css/layout.css">
+
+    {#    框架js#}
+    <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/vue-router/3.0.1/vue-router.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/muse-ui@3.0.1/dist/muse-ui.min.js"></script>
+
+    <title>2018之江全球人工智能大赛</title>
+    <style>
+        body{ 
+            background-image:url('http://src.1zlab.com/gac/background.jpg');
+            background-color: black;
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <mu-flex class="layout" justify-content="center" align-items="center">
+            <mu-flex class="left-pane" justify-content="start" align-items="center" direction="column">
+                <h1 class="rank-title">实时分数排行榜</h1>
+                <mu-flex v-for="i,index in rank" v-if="i.rank>0"  justify-content="center" align-items="start" class="ranklist-item">
+                    <span class="ranklist-item-rank">[[i.rank]]</span>
+                    <span class="ranklist-item-teamname">[[i.name]]</span>
+                    <span class="ranklist-item-score">[[i.score]]</span>
+                </mu-flex>
+                <mu-flex v-for="i,index in rank" v-if="i.rank===0"  justify-content="center" align-items="start" class="ranklist-item">
+                    <span class="ranklist-item-rank">#</span>
+                    <span class="ranklist-item-teamname">[[i.name]]</span>
+                    <span class="ranklist-item-score">[[i.score]]</span>
+                </mu-flex>      
+            </mu-flex>
+
+            <mu-flex class="right-pane" justify-content="start" align-items="center" direction="column">
+                <mu-flex class="title-layout" justify-content="center" align-items="center" direction="column">
+                    <h1 class="main-title">2018之江全球人工智能大赛</h1>
+                    <p class="subtitle">{% block game %} {% endblock %}([[round]]/5轮)</p>
+                </mu-flex>
+            
+                <mu-flex justify-content="start" align-items="start" direction="column" class="row-team-layout">
+                    <mu-flex justify-content="start" align-items="center" class="row-team">
+                        <mu-flex v-for="i in teams.slice(0,5)" direction="column" justify-content="center" align-items="center" class="team-block"> 
+                            <img style="width:100%" src="/static/image/logo.jpg">
+                         
+                            <span class="round-teamname">[[i.name]]</span>
+                            <span class="round-score">本轮得分:</span>
+                            <span class="round-rank"> [[i.score_round]]</span>       
+                        </mu-flex> 
+                    </mu-flex>
+                    <mu-flex justify-content="start" align-items="center" class="row-team">
+                        <mu-flex v-for="i in teams.slice(5,10)" direction="column" justify-content="center" align-items="center" class="team-block"> 
+                            <img style="width:100%" src="/static/image/logo.jpg">
+                         
+                            <span class="round-teamname">[[i.name]]</span>
+                            <span class="round-score">本轮得分: </span>
+                            <span class="round-rank">[[i.score_round]]</span>       
+                        </mu-flex> 
+                    </mu-flex>
+                </mu-flex>
+            </mu-flex>
+        </mu-flex>
+        <div id="particles-js" class="particles"></div>
+    </div>
+
+    {% block script %}
+    {% load static %}
+    <script src= "{% static 'GAC/race1.js' %}" ></script>
+    {% endblock %}
+</body>
+</html>
