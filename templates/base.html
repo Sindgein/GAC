@@ -35,15 +35,19 @@
         <mu-flex class="layout" justify-content="center" align-items="center">
             <mu-flex class="left-pane" justify-content="start" align-items="center" direction="column">
                 <h1 class="rank-title">实时分数排行榜</h1>
-                <mu-flex v-for="i,index in rank" v-if="i.rank>0"  justify-content="center" align-items="start" class="ranklist-item">
+                <mu-flex v-for="i,index in rank" v-if="i.rank>0"  justify-content="center" align-items="center" class="ranklist-item">
                     <span class="ranklist-item-rank">[[i.rank]]</span>
                     <span class="ranklist-item-teamname">[[i.name]]</span>
                     <span class="ranklist-item-score">[[i.score]]</span>
+                    <mu-icon v-if="i.trend===2" size="32" value="arrow_upward" color="green"></mu-icon>
+                    <mu-icon v-if="i.trend===1" size="32" value="remove" color="yellow"></mu-icon>
+                    <mu-icon v-if="i.trend===0" size="32" value="arrow_downward" color="red"></mu-icon>
                 </mu-flex>
-                <mu-flex v-for="i,index in rank" v-if="i.rank===0"  justify-content="center" align-items="start" class="ranklist-item">
+                <mu-flex v-for="i,index in rank" v-if="i.rank===0"  justify-content="center" align-items="center" class="ranklist-item">
                     <span class="ranklist-item-rank">#</span>
                     <span class="ranklist-item-teamname">[[i.name]]</span>
                     <span class="ranklist-item-score">[[i.score]]</span>
+                    <mu-icon size="32" value="remove" color="yellow"></mu-icon>
                 </mu-flex>      
             </mu-flex>
 
