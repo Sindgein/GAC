@@ -2,6 +2,8 @@ from django.urls import path, re_path
 from . import api
 from . import views
 
+
+app_name = 'game2'
 urlpatterns = [
     path('', views.index),
     path('api/update/', api.get_ranklist),
