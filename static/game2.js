@@ -10,7 +10,7 @@ var app = new Vue({
     },
     mounted() {
       this.$nextTick(function () {
-        this.particles();
+        showParticles();
         this.get_round();
         setInterval(this.get_updates, 10000);
   
