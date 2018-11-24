@@ -32,6 +32,7 @@ class Teams(models.Model):
     rank_round5 = models.IntegerField(
         verbose_name='第五轮排名', blank=True, default=0)
 
+    trend = models.IntegerField(verbose_name='趋势', blank=True, default=1)
     score = models.FloatField(verbose_name='总成绩', blank=True, default=0)
     rank = models.IntegerField(verbose_name='总排名', blank=True, default=0)
 
@@ -40,19 +41,19 @@ class Teams(models.Model):
 
     def _get_current_info(self, round):
         if round == 1:
-            return self.rank_round1, self.score_round1, self.rank, self.score, self.name, self.number
+            return self.rank_round1, self.score_round1, self.rank, self.score, self.name, self.number, self.trend
 
         elif round == 2:
-            return self.rank_round2, self.score_round2, self.rank, self.score, self.name, self.number
+            return self.rank_round2, self.score_round2, self.rank, self.score, self.name, self.number, self.trend
 
         elif round == 3:
-            return self.rank_round3, self.score_round3, self.rank, self.score, self.name, self.number
+            return self.rank_round3, self.score_round3, self.rank, self.score, self.name, self.number, self.trend
 
         elif round == 4:
-            return self.rank_round4, self.score_round4, self.rank, self.score, self.name, self.number
+            return self.rank_round4, self.score_round4, self.rank, self.score, self.name, self.number, self.trend
 
         elif round == 5:
-            return self.rank_round5, self.score_round5, self.rank, self.score, self.name, self.number
+            return self.rank_round5, self.score_round5, self.rank, self.score, self.name, self.number, self.trend
 
     def current_info(self, round):
         info = self._get_current_info(int(round))
@@ -64,23 +65,24 @@ class Teams(models.Model):
             'score': info[3],
             'name': info[4],
             'number': info[5],
+            'trend': info[6]
         }
 
     def set_round_info(self, round, data):
         if round == 1:
-            self.score, self.score_round1, self.rank, self.rank_round1 = data
+            self.score, self.score_round1, self.rank, self.rank_round1, self.trend = data
 
         elif round == 2:
-            self.score, self.score_round2, self.rank, self.rank_round2 = data
+            self.score, self.score_round2, self.rank, self.rank_round2, self.trend = data
 
         elif round == 3:
-            self.score, self.score_round3, self.rank, self.rank_round3 = data
+            self.score, self.score_round3, self.rank, self.rank_round3, self.trend = data
 
         elif round == 4:
-            self.score, self.score_round4, self.rank, self.rank_round4 = data
+            self.score, self.score_round4, self.rank, self.rank_round4, self.trend = data
 
         elif round == 5:
-            self.score, self.score_round5, self.rank, self.rank_round5 = data
+            self.score, self.score_round5, self.rank, self.rank_round5, self.trend = data
 
 
         self.save()
