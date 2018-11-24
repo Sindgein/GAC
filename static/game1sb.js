@@ -4,6 +4,7 @@ var client = new Vue({
   data: {
     round: null,
     team_info: [],
+    allowSend: true,
     columns: [{
         title: '队伍编号',
         width: 200,
@@ -87,36 +88,41 @@ var client = new Vue({
       reader.onload = function (e) {
         let txt = String.fromCharCode.apply(null, new Uint8Array(e.target.result));
         let info = txt.split('\n');
+        if (info.length !== 11) {
+          alert('TXT 格式有误,请仔细检查!');
+          that.allowSend = false
+        }
         that.round = info[0];
         // console.log(info.slice(1, 11))
-        try {
-          that.team_info = info.slice(1, 11).map((i) => {
-            let infos = i.split(':')
-            let team_num = infos[0]
-            let team_data = infos[1].split(',')
 
-            // console.log(team_data[2])
-            return {
-              round: that.round,
-              number: team_num,
-              score: team_data[0],
-              round_score: team_data[1],
-              rank: team_data[2],
-              round_rank: team_data[3],
-              trend: team_data[4]
-            }
+        that.team_info = info.slice(1, 11).map((i) => {
+          let infos = i.split(':')
+          let team_num = infos[0]
+          let team_data = infos[1].split(',')
+          if (team_data.length !== 5) {
+            alert('TXT 格式有误,请仔细检查!');
+            that.allowSend = false
+          }
+          else{
+            that.allowSend = true
+          }
 
-          });
-        } catch (e) {
-          alert('TXT 格式有误,请仔细检查!')
-        }
+          return {
+            round: that.round,
+            number: team_num,
+            score: team_data[0],
+            round_score: team_data[1],
+            rank: team_data[2],
+            round_rank: team_data[3],
+            trend: team_data[4]
+          }
+
+        });
+
         // console.log(that.team_info)
       };
       reader.readAsArrayBuffer(f);
     },
-
-
-
   }
 
 })
