@@ -28,9 +28,10 @@ def update_ranklist(request):
     round_score = request.POST.get('round_score')
     rank = request.POST.get('rank')
     round_rank = request.POST.get('round_rank')
+    trend = request.POST.get('trend')
 
     team = Teams.objects.get(number=int(number))
-    team.set_round_info(int(_round), (float(score), float(round_score), int(rank), int(round_rank)))
+    team.set_round_info(int(_round), (float(score), float(round_score), int(rank), int(round_rank), int(trend)))
 
     rsp = dict(code=0, message='team %s round %s done!' % (number, _round))
     return JsonResponse(rsp, safe=False)

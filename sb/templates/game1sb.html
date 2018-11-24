@@ -36,12 +36,13 @@ game<!DOCTYPE html>
                         <td>[[scope.row.round_score]]</td>
                         <td>[[scope.row.rank]]</td>
                         <td>[[scope.row.round_rank]]</td>
+                        <td>[[scope.row.trend]]</td>
                     </template>
                 </mu-data-table>
             </mu-paper>
     
             <mu-flex>
-                <mu-button large color="secondary" @click='btnclick' style="margin:12px" >选择TXT</mu-button>
+                <mu-button large color="secondary" @click='btnclick' style="margin:12px">选择TXT</mu-button>
                 <mu-button large color="primary" @click='upload' style="margin:12px">上传服务器</mu-button>
             </mu-flex>
         </mu-flex>
