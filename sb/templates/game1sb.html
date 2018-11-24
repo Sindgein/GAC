@@ -43,7 +43,7 @@ game<!DOCTYPE html>
     
             <mu-flex>
                 <mu-button large color="secondary" @click='btnclick' style="margin:12px">选择TXT</mu-button>
-                <mu-button :disabled="allowSend" large color="primary" @click='upload' style="margin:12px">上传服务器</mu-button>
+                <mu-button :disabled="!allowSend" large color="primary" @click='upload' style="margin:12px">上传服务器</mu-button>
             </mu-flex>
         </mu-flex>
     </div>

@@ -90,21 +90,22 @@ var client = new Vue({
         let info = txt.split('\n');
         if (info.length !== 11) {
           alert('TXT 格式有误,请仔细检查!');
-          that.allowSend = false
+          that.allowSend = false;
         }
         that.round = info[0];
         // console.log(info.slice(1, 11))
 
         that.team_info = info.slice(1, 11).map((i) => {
-          let infos = i.split(':')
-          let team_num = infos[0]
-          let team_data = infos[1].split(',')
+          let infos = i.split(':');
+          let team_num = infos[0];
+          let team_data = infos[1].split(',');
+          // console.log(team_data.length);
           if (team_data.length !== 5) {
-            alert('TXT 格式有误,请仔细检查!');
-            that.allowSend = false
-          }
-          else{
-            that.allowSend = true
+            // alert('TXT 格式有误,请仔细检查!');
+            // this.$toast.error('TXT 格式有误,请仔细检查')
+            that.allowSend = false;
+            // console.log(that.allowSend)
+            // return
           }
 
           return {
