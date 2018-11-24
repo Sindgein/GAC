@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://fonts.loli.net/css?family=Roboto:300,400,500,700,400italic">
 
     {#    自定义css#}
-    <link rel="stylesheet" href="/static/css/layout.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'layout.css' %}">
 
     {#    框架js#}
     <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -79,8 +80,8 @@
     </div>
 
     {% block script %}
-    {% load static %}
-    <script src= "{% static 'GAC/race1.js' %}" ></script>
+    <!-- {% load static %} -->
+    <script src="{% static 'game1.js' %}" ></script>
     {% endblock %}
 </body>
 </html>
