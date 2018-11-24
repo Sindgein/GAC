@@ -89,7 +89,7 @@ var client = new Vue({
         let txt = String.fromCharCode.apply(null, new Uint8Array(e.target.result));
         let info = txt.split('\n');
         if (info.length !== 11) {
-          alert('TXT 格式有误,请仔细检查!');
+          // alert('TXT 格式有误,请仔细检查!');
           that.allowSend = false;
         }
         that.round = info[0];
