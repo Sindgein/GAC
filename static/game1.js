@@ -39,7 +39,7 @@ var app = new Vue({
             return 0
           })
 
-          console.log(this.rank[0].rank)
+          // console.log(this.rank[0].rank)
         }
       )
     },

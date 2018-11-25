@@ -60,20 +60,20 @@
                 <mu-flex justify-content="start" align-items="start" direction="column" class="row-team-layout">
                     <mu-flex justify-content="start" align-items="center" class="row-team">
                         <mu-flex v-for="i in teams.slice(0,5)" direction="column" justify-content="center" align-items="center" class="team-block"> 
-                            <img style="width:100%" src="/static/image/logo.jpg">
+                            <img style="width:100%" :src="i.logo">
                          
                             <span class="round-teamname">[[i.name]]</span>
                             <span class="round-score">本轮得分:</span>
-                            <span class="round-rank"> [[i.score_round]]</span>       
+                            <span class="round-rank">[[i.score_round===0?'#':i.score_round]]</span>       
                         </mu-flex> 
                     </mu-flex>
                     <mu-flex justify-content="start" align-items="center" class="row-team">
                         <mu-flex v-for="i in teams.slice(5,10)" direction="column" justify-content="center" align-items="center" class="team-block"> 
-                            <img style="width:100%" src="/static/image/logo.jpg">
+                            <img style="width:100%" :src="i.logo">
                          
                             <span class="round-teamname">[[i.name]]</span>
                             <span class="round-score">本轮得分: </span>
-                            <span class="round-rank">[[i.score_round]]</span>       
+                            <span class="round-rank">[[i.score_round===0?'#':i.score_round]]</span>       
                         </mu-flex> 
                     </mu-flex>
                 </mu-flex>

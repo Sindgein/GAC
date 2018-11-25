@@ -41,22 +41,22 @@ class Teams(models.Model):
 
     def _get_current_info(self, round):
         if round == 1:
-            return self.rank_round1, self.score_round1, self.rank, self.score, self.name, self.number, self.trend
+            return self.rank_round1, self.score_round1, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
         elif round == 2:
-            return self.rank_round2, self.score_round2, self.rank, self.score, self.name, self.number, self.trend
+            return self.rank_round2, self.score_round2, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
         elif round == 3:
-            return self.rank_round3, self.score_round3, self.rank, self.score, self.name, self.number, self.trend
+            return self.rank_round3, self.score_round3, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
         elif round == 4:
-            return self.rank_round4, self.score_round4, self.rank, self.score, self.name, self.number, self.trend
+            return self.rank_round4, self.score_round4, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
         elif round == 5:
-            return self.rank_round5, self.score_round5, self.rank, self.score, self.name, self.number, self.trend
+            return self.rank_round5, self.score_round5, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
         else:
-            return '#', '#', '#', '#', self.name, self.number, 1
+            return 0, 0, 0, 0, self.name, self.number, 1, self.logo
 
     def current_info(self, round):
         info = self._get_current_info(int(round))
@@ -68,7 +68,8 @@ class Teams(models.Model):
             'score': info[3],
             'name': info[4],
             'number': info[5],
-            'trend': info[6]
+            'trend': info[6],
+            'logo': info[7]
         }
 
     def set_round_info(self, round, data):
