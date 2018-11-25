@@ -8,4 +8,5 @@ urlpatterns = [
     path('api/update/ranklist/', api.update_ranklist),
     path('api/get/round/', api.get_round),
     path('api/set/round/', api.set_round),
+    path('api/get/teams/', api.get_teams)
 ]

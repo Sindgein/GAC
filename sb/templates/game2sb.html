@@ -29,14 +29,15 @@ game<!DOCTYPE html>
             <h1 style="color:aliceblue;font-size:40px">零样本图像识别</h1>
             <h1 style="color:aliceblue">当前轮数 : [[this.round]]</h1>
             <mu-paper style="height:auto;">
-                <mu-data-table :columns="columns" :data="team_info" style="width:100%;height:100%;">
+                <mu-data-table :columns="columns" :data="team_info" style="width:100%;">
                     <template slot-scope="scope">
                         <td>[[scope.row.number]]</td>
-                        <td>[[scope.row.score]]</td>
-                        <td>[[scope.row.round_score]]</td>
-                        <td>[[scope.row.rank]]</td>
-                        <td>[[scope.row.round_rank]]</td>
-                        <td>[[scope.row.trend]]</td>
+                        <td class="is-center">[[scope.row.name]]</td>
+                        <td class="is-center">[[scope.row.score]]</td>
+                        <td class="is-center">[[scope.row.round_score]]</td>
+                        <td class="is-center">[[scope.row.rank]]</td>
+                        <td class="is-center">[[scope.row.round_rank]]</td>
+                        <td class="is-center">[[scope.row.trend]]</td>
                     </template>
                 </mu-data-table>
             </mu-paper>

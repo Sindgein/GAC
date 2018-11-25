@@ -60,7 +60,7 @@ class Teams(models.Model):
 
     def current_info(self, round):
         info = self._get_current_info(int(round))
-        print(info)
+        # print(info)
         return {
             'rank_round': info[0],
             'score_round': info[1],

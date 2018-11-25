@@ -5,10 +5,18 @@ var client = new Vue({
     round: null,
     team_info: [],
     allowSend: false,
+    teams: [],
     columns: [{
         title: '队伍编号',
-        width: 200,
+        width: 100,
         name: 'number'
+      },
+      {
+        title: '队伍名称',
+        width: 160,
+        name: 'number',
+        align: 'center',
+        sortable: true
       },
       {
         title: '总分',
@@ -51,6 +59,7 @@ var client = new Vue({
     this.$nextTick(function () {
       showParticles();
       this.$refs['fileinput'].addEventListener('change', this.handle_put_file_select, false);
+      this.get_teams();
     })
 
   },
@@ -63,10 +72,29 @@ var client = new Vue({
       })
     },
 
+    get_teams() {
+      $.get('/game1/api/get/teams/').then(r => {
+        this.teams = r.data.teams.sort(
+          (x, y) => {
+            if (x.number > y.number)
+              return 1;
+            if (x.number < y.number)
+              return -1;
+            return 0;
+          }
+        )
+      });
+    },
+
     update_ranklist() {
-      for (i in this.team_info)
+      for (i in this.team_info) {
         // console.log(i)
-        $.post('/game1/api/update/ranklist/', this.team_info[i]).then(r => console.log(r))
+        $.post('/game2/api/update/ranklist/', this.team_info[i]).then(r => {
+          console.log(r);
+        });
+        this.team_info = []
+        // setTimeout(() => {}, 50);
+      }
     },
 
     btnclick() {
@@ -111,6 +139,7 @@ var client = new Vue({
           return {
             round: that.round,
             number: team_num,
+            name: that.teams[team_num - 1].name,
             score: team_data[0],
             round_score: team_data[1],
             rank: team_data[2],
