@@ -14,7 +14,7 @@ var client = new Vue({
       {
         title: '队伍名称',
         width: 160,
-        name: 'number',
+        name: 'name',
         align: 'center',
         sortable: true
       },
@@ -49,6 +49,13 @@ var client = new Vue({
       {
         title: '趋势',
         name: 'trend',
+        width: 126,
+        align: 'center',
+        sortable: true
+      },
+      {
+        title: '是否上传',
+        name: 'uploaded',
         width: 126,
         align: 'center',
         sortable: true
@@ -89,10 +96,19 @@ var client = new Vue({
     update_ranklist() {
       for (i in this.team_info) {
         // console.log(i)
+        let n = i;
         $.post('/game2/api/update/ranklist/', this.team_info[i]).then(r => {
           console.log(r);
+
+          if(r.code===0){
+           
+            this.team_info[n].islegal = '√'
+          }
+          else{
+            this.team_info[n].islegal = 'x'
+          }
         });
-        this.team_info = []
+        // this.team_info = []
         // setTimeout(() => {}, 50);
       }
     },
@@ -144,7 +160,8 @@ var client = new Vue({
             round_score: team_data[1],
             rank: team_data[2],
             round_rank: team_data[3],
-            trend: team_data[4]
+            trend: team_data[4],
+            islegal: '',
           }
 
         });

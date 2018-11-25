@@ -52,7 +52,7 @@ def update_ranklist(request):
         rsp = dict(code=0, message='team %s round %s done!' % (number, _round))
 
     except:
-        rsp = dict(codde=-1, mesaage='update ranklist error')
+        rsp = dict(code=-1, mesaage='update ranklist error')
 
     return JsonResponse(rsp, safe=False)
 
