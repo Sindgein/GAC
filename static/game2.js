@@ -26,7 +26,7 @@ var app = new Vue({
       },
       
       get_updates() {
-        $.get('/game2/api/get/ranlist/?round=' + this.round).then(
+        $.get('/game2/api/get/ranklist/?round=' + this.round).then(
           r => {
             this.teams = r.data.team_infos;
             this.round = r.data.round;
