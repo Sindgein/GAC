@@ -55,6 +55,9 @@ class Teams(models.Model):
         elif round == 5:
             return self.rank_round5, self.score_round5, self.rank, self.score, self.name, self.number, self.trend
 
+        else:
+            return '#', '#', '#', '#', self.name, self.number, 1
+
     def current_info(self, round):
         info = self._get_current_info(int(round))
         print(info)

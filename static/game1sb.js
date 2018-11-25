@@ -4,7 +4,7 @@ var client = new Vue({
   data: {
     round: null,
     team_info: [],
-    allowSend: true,
+    allowSend: false,
     columns: [{
         title: '队伍编号',
         width: 200,
@@ -90,7 +90,7 @@ var client = new Vue({
         let info = txt.split('\n');
         if (info.length !== 11) {
           // alert('TXT 格式有误,请仔细检查!');
-          that.allowSend = false;
+          that.allowSend = true;
         }
         that.round = info[0];
         // console.log(info.slice(1, 11))
@@ -103,7 +103,7 @@ var client = new Vue({
           if (team_data.length !== 5) {
             // alert('TXT 格式有误,请仔细检查!');
             // this.$toast.error('TXT 格式有误,请仔细检查')
-            that.allowSend = false;
+            that.allowSend = true;
             // console.log(that.allowSend)
             // return
           }
