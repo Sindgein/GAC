@@ -2,12 +2,11 @@ var app = new Vue({
   el: '#app',
   delimiters: ['[[', ']]'],
   data: {
-    teams_row1: [],
-    teams_row2: [],
     teams: [],
     rank: [],
     round: '',
     audio: null,
+    times: 0,
   },
   mounted() {
     this.$nextTick(function () {
@@ -28,6 +27,7 @@ var app = new Vue({
     },
 
     get_updates() {
+      this.is_times_added();
       $.get('/game1/api/get/ranklist/?round=' + this.round).then(
         r => {
           this.teams = r.data.team_infos;
@@ -44,10 +44,19 @@ var app = new Vue({
           // console.log(this.rank[0].rank)
         }
       );
-      this.play();
+      // this.play();
     },
 
-    play(){
+    is_times_added() {
+      let t;
+      $.get('/game1/api/get/times/').then(r => t = r.data.times);
+      if(t !== this.times){
+        this.play();
+        this.times = t;
+      }
+    },
+
+    play() {
       this.audio.play();
     },
 

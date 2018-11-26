@@ -7,59 +7,59 @@ var client = new Vue({
     allowSend: false,
     teams: [],
     columns: [{
-        title: '队伍编号',
-        width: 100,
-        name: 'number'
-      },
-      {
-        title: '队伍名称',
-        width: 160,
-        name: 'name',
-        align: 'center',
-        sortable: true
-      },
-      {
-        title: '总分',
-        name: 'score',
-        width: 126,
-        align: 'center',
-        sortable: true
-      },
-      {
-        title: '本轮分',
-        name: 'round_score',
-        width: 126,
-        align: 'center',
-        sortable: true
-      },
-      {
-        title: '总排名',
-        name: 'rank',
-        width: 126,
-        align: 'center',
-        sortable: true
-      },
-      {
-        title: '本轮排名',
-        name: 'round_rank',
-        width: 126,
-        align: 'center',
-        sortable: true
-      },
-      {
-        title: '趋势',
-        name: 'trend',
-        width: 126,
-        align: 'center',
-        sortable: true
-      },
-      {
-        title: '是否上传',
-        name: 'uploaded',
-        width: 126,
-        align: 'center',
-        sortable: true
-      }
+      title: '队伍编号',
+      width: 100,
+      name: 'number'
+    },
+    {
+      title: '队伍名称',
+      width: 160,
+      name: 'name',
+      align: 'center',
+      sortable: true
+    },
+    {
+      title: '总分',
+      name: 'score',
+      width: 126,
+      align: 'center',
+      sortable: true
+    },
+    {
+      title: '本轮分',
+      name: 'round_score',
+      width: 126,
+      align: 'center',
+      sortable: true
+    },
+    {
+      title: '总排名',
+      name: 'rank',
+      width: 126,
+      align: 'center',
+      sortable: true
+    },
+    {
+      title: '本轮排名',
+      name: 'round_rank',
+      width: 126,
+      align: 'center',
+      sortable: true
+    },
+    {
+      title: '趋势',
+      name: 'trend',
+      width: 126,
+      align: 'center',
+      sortable: true
+    },
+    {
+      title: '是否上传',
+      name: 'uploaded',
+      width: 126,
+      align: 'center',
+      sortable: true
+    }
     ],
   },
   mounted() {
@@ -78,6 +78,11 @@ var client = new Vue({
         }
       })
     },
+
+    set_times() {
+      $.get('/game1/api/set/times/').then(r => console.log(r))
+    },
+
 
     get_teams() {
       $.get('/game1/api/get/teams/').then(r => {
@@ -100,11 +105,11 @@ var client = new Vue({
         $.post('/game1/api/update/ranklist/', this.team_info[i]).then(r => {
           console.log(r);
 
-          if(r.code===0){
-           
+          if (r.code === 0) {
+
             this.team_info[n].islegal = '√'
           }
-          else{
+          else {
             this.team_info[n].islegal = 'x'
           }
         });

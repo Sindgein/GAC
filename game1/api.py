@@ -32,6 +32,25 @@ def set_round(request):
 
     return JsonResponse(rsp, safe=False)
 
+def get_times(request):
+    try:
+        rsp = dict(code=0, data=dict(times=Round.get_times()))
+    except:
+        rsp = dict(code=-1, message='get times failed')
+
+    return JsonResponse(rsp, safe=False)
+
+
+def set_times(request):
+    try:
+        Round.set_times()
+        rsp = dict(code=0, message='set times done')
+    except:
+        rsp = dict(code=-1, message='set times failed')
+
+    return JsonResponse(rsp, safe=False)
+
+
 
 def update_ranklist(request):
 

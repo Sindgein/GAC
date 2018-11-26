@@ -79,6 +79,10 @@ var client = new Vue({
       })
     },
 
+    set_times() {
+      $.get('/game2/api/set/times/').then(r => console.log(r))
+    },
+
     get_teams() {
       $.get('/game2/api/get/teams/').then(r => {
         this.teams = r.data.teams.sort(

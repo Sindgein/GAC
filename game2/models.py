@@ -97,6 +97,7 @@ class Teams(models.Model):
 
 class Round(models.Model):
     round = models.IntegerField(verbose_name='轮数', default=1)
+    times = models.IntegerField(verbose_name='第几次更新', default=0)
 
     @classmethod
     def get_round(cls):
@@ -106,10 +107,23 @@ class Round(models.Model):
         return cls.objects.all()[0].round
 
     @classmethod
+    def get_times(cls):
+        if not len(cls.objects.all()):
+            return 0
+        return cls.objects.all()[0].times
+
+    @classmethod
     def set_round(cls, _round):
         r = cls.objects.all()[0]
         r.round = _round
         r.save()
+
+    @classmethod
+    def set_times(cls):
+        r = cls.objects.all()[0]
+        r.times += 1
+        r.save()
+
 
     def __str__(self):
         return '第%s轮' % str(self.round)
