@@ -49,11 +49,14 @@ var app = new Vue({
 
     is_times_added() {
       let t;
-      $.get('/game1/api/get/times/').then(r => t = r.data.times);
-      if(t !== this.times){
-        this.play();
-        this.times = t;
-      }
+      $.get('/game2/api/get/times/').then(r => {
+        t = r.data.times;
+        if (t !== this.times) {
+          this.play();
+          this.times = t;
+        }
+      });
+
     },
 
     play() {
