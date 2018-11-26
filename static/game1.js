@@ -7,10 +7,12 @@ var app = new Vue({
     teams: [],
     rank: [],
     round: '',
+    audio: null,
   },
   mounted() {
     this.$nextTick(function () {
       showParticles();
+      this.audio = this.refs['audio'];
       this.get_round();
       setInterval(this.get_updates, 10000);
 
@@ -41,9 +43,13 @@ var app = new Vue({
 
           // console.log(this.rank[0].rank)
         }
-      )
+      );
+      this.play();
     },
 
+    play(){
+      this.audio.play();
+    },
 
   }
 
