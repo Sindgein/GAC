@@ -12,7 +12,7 @@ var app = new Vue({
   mounted() {
     this.$nextTick(function () {
       showParticles();
-      this.audio = this.refs['audio'];
+      this.audio = this.$refs['audio'];
       this.get_round();
       setInterval(this.get_updates, 10000);
 
