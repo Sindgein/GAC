@@ -65,7 +65,7 @@
                          
                             <span class="round-teamname">[[i.name]]</span>
                             <span class="round-score">本轮得分:</span>
-                            <span class="round-rank">[[i.score_round===0?'#':i.score_round]]</span>       
+                            <span class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span>       
                         </mu-flex> 
                     </mu-flex>
                     <mu-flex justify-content="start" align-items="center" class="row-team">
@@ -74,7 +74,7 @@
                          
                             <span class="round-teamname">[[i.name]]</span>
                             <span class="round-score">本轮得分: </span>
-                            <span class="round-rank">[[i.score_round===0?'#':i.score_round]]</span>       
+                            <span class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span>       
                         </mu-flex> 
                     </mu-flex>
                 </mu-flex>
