@@ -7,10 +7,12 @@ var app = new Vue({
     round: '',
     audio: null,
     times: 0,
+    slide: false
   },
   mounted() {
     this.$nextTick(function () {
       showParticles();
+      setTimeout(()=>this.slide=true, 300);
       this.audio = this.$refs['audio'];
       this.get_round();
       setInterval(this.get_updates, 10000);
@@ -61,6 +63,9 @@ var app = new Vue({
 
     play() {
       this.audio.play();
+      this.slide = !this.slide;
+
+      setTimeout(()=>this.slide=!this.slide, 300);
     },
 
   }

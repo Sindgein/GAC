@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   
+    {% load static %}
     <script src="https://cdnjs.loli.net/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/muse-ui@3.0.1/dist/muse-ui.min.css">
     <link href="https://cdnjs.loli.net/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="https://fonts.loli.net/css?family=Roboto:300,400,500,700,400italic">
 
     {#    自定义css#}
-    {% load static %}
     <link rel="stylesheet" href="{% static 'layout.css' %}">
-
     {#    框架js#}
     <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.loli.net/ajax/libs/vue/2.5.16/vue.min.js"></script>
@@ -62,24 +60,26 @@
             
                 <mu-flex justify-content="start" align-items="start" direction="column" class="row-team-layout">
                     <mu-flex justify-content="start" align-items="center" class="row-team">
-                        <mu-flex v-for="i in teams.slice(0,5)" direction="column" justify-content="start" align-items="start" class="team-block"> 
-                            <img class="team-log"  :src="i.logo">
-                         
-                            <span class="round-teamname">[[i.name]]</span>
-                            <span class="round-score">[[ (round>0) ? '本轮得分':'本轮跑分' ]]:</span>
-                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
-                            <span v-else class="round-rank">[[i.rank_round]]</span>         
-                        </mu-flex> 
+                        <mu-scale-transition>
+                            <mu-flex v-show="slide" v-for="i in teams.slice(0,5)" direction="column" justify-content="start" align-items="start" class="team-block"> 
+                                <img class="team-log"  :src="i.logo">          
+                                <span class="round-teamname">[[i.name]]</span>
+                                <span class="round-score">[[ (round>0) ? '本轮得分':'本轮跑分' ]]:</span>
+                                <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
+                                <span v-else class="round-rank">[[i.rank_round]]</span>         
+                            </mu-flex> 
+                        </mu-scale-transition>
                     </mu-flex>
                     <mu-flex justify-content="start" align-items="center" class="row-team">
-                        <mu-flex v-for="i in teams.slice(5,10)" direction="column" justify-content="start" align-items="start" class="team-block"> 
-                            <img class="team-log" style="width:100%" :src="i.logo">
-                         
-                            <span class="round-teamname">[[i.name]]</span>
-                            <span class="round-score">[[(round>0) ? '本轮得分':'本轮跑分' ]] </span>
-                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
-                            <span v-else class="round-rank">[[i.rank_round]]</span>       
-                        </mu-flex> 
+                        <mu-scale-transition>
+                            <mu-flex v-show="slide" v-for="i in teams.slice(5,10)" direction="column" justify-content="start" align-items="start" class="team-block"> 
+                                <img class="team-log" style="width:100%" :src="i.logo">                        
+                                <span class="round-teamname">[[i.name]]</span>
+                                <span class="round-score">[[(round>0) ? '本轮得分':'本轮跑分' ]] </span>
+                                <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
+                                <span v-else class="round-rank">[[i.rank_round]]</span>       
+                            </mu-flex> 
+                        </mu-scale-transition>
                     </mu-flex>
                 </mu-flex>
             </mu-flex>
