@@ -66,8 +66,9 @@
                             <img class="team-log"  :src="i.logo">
                          
                             <span class="round-teamname">[[i.name]]</span>
-                            <span class="round-score">[[ (round<0) ? '本轮得分':'本轮跑分' ]]:</span>
-                            <span class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span>       
+                            <span class="round-score">[[ (round>0) ? '本轮得分':'本轮跑分' ]]:</span>
+                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
+                            <span v-else class="round-rank">[[i.rank_round]]</span>         
                         </mu-flex> 
                     </mu-flex>
                     <mu-flex justify-content="start" align-items="center" class="row-team">
@@ -75,9 +76,9 @@
                             <img class="team-log" style="width:100%" :src="i.logo">
                          
                             <span class="round-teamname">[[i.name]]</span>
-                            <span class="round-score">[[(round<0) ? '本轮得分':'本轮跑分' ]] </span>
+                            <span class="round-score">[[(round>0) ? '本轮得分':'本轮跑分' ]] </span>
                             <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
-                            <span v-if="round<0" class="round-rank">[[i.rank_round]]</span>       
+                            <span v-else class="round-rank">[[i.rank_round]]</span>       
                         </mu-flex> 
                     </mu-flex>
                 </mu-flex>
