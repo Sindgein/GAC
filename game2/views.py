@@ -5,4 +5,4 @@ from .models import Round
 
 def index(request):
     rounds = Round.get_total_rounds()
-    return render(request, 'game1.html', locals())
+    return render(request, 'game2.html', locals())
