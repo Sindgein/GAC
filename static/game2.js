@@ -9,6 +9,7 @@ var app = new Vue({
     times: 0,
     slide: true,
     change: true,
+    allowChange: false
   },
   mounted() {
     this.$nextTick(function () {
@@ -34,11 +35,13 @@ var app = new Vue({
       $.get('/game2/api/get/ranklist/?round=' + this.round).then(
         r => {
           this.teams = r.data.team_infos;
-          if (this.round === r.data.round * -1) {
-            this.change = !this.change;
-            setTimeout(() => this.change = !this.change, 300)
+          if (this.round * r.data.round < 0) {
+            // this.change = !this.change;
+            // setTimeout(() => this.change = !this.change, 300)
+            this.allowChange = !this.allowChange;
           }
-          this.round = r.data.round;
+
+          setTimeout(() => this.round = r.data.round, 1400);
           this.rank = r.data.team_infos.sort((i, j) => {
             if (i.rank > j.rank)
               return 1
@@ -69,8 +72,20 @@ var app = new Vue({
     play() {
       this.audio.play();
       this.slide = !this.slide;
-      setTimeout(() => this.slide = !this.slide, 300);
+      let that = this;
+      setTimeout(() => {
+        this.slide = !this.slide;
+        setTimeout(() => {
+          if (this.allowChange) {
+            this.change = !this.change;
+            setTimeout(() => that.change = !that.change, 500);
+            this.allowChange = !this.allowChange;
+          }
+        }, 1000)
+
+      }, 300);
     },
+
   }
 
 })
