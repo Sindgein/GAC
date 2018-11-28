@@ -4,7 +4,8 @@ from django.db import models
 # Create your models here.
 class Teams(models.Model):
     name = models.TextField(verbose_name='队伍名称', )
-    logo = models.URLField(verbose_name='队伍头像', blank=True, default='http://src.1zlab.com/gac/gac-logo.jpg')
+    logo = models.URLField(verbose_name='队伍头像', blank=True,
+                           default='http://src.1zlab.com/gac/gac-logo.jpg')
     number = models.IntegerField(verbose_name='队伍编号', blank=True, default=0)
 
     score_round1 = models.FloatField(
@@ -98,6 +99,7 @@ class Teams(models.Model):
 class Round(models.Model):
     round = models.IntegerField(verbose_name='轮数', default=1)
     times = models.IntegerField(verbose_name='第几次更新', default=0)
+    total_rounds = models.IntegerField(verbose_name="rounds", default=4)
 
     @classmethod
     def get_round(cls):
@@ -113,6 +115,10 @@ class Round(models.Model):
         return cls.objects.all()[0].times
 
     @classmethod
+    def get_total_rounds(cls):
+        return cls.objects.all()[0].total_rounds
+
+    @classmethod
     def set_round(cls, _round):
         r = cls.objects.all()[0]
         r.round = _round
@@ -124,13 +130,9 @@ class Round(models.Model):
         r.times += 1
         r.save()
 
-
     def __str__(self):
         return '第%s轮' % str(self.round)
 
     class Meta:
         verbose_name = '当前轮数'
         verbose_name_plural = '当前轮数'
-
-
-

@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from .models import Round
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'game1.html')
+    rounds = Round.get_total_rounds()
+    return render(request, 'game1.html', locals())
