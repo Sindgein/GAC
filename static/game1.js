@@ -16,7 +16,7 @@ var app = new Vue({
       // setTimeout(()=>this.slide=true, 300);
       this.audio = this.$refs['audio'];
       this.get_round();
-      setInterval(this.get_updates, 10000);
+      setInterval(this.get_updates, 2800);
 
     })
 
