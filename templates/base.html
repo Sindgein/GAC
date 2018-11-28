@@ -61,7 +61,7 @@
                 <mu-flex justify-content="start" align-items="start" direction="column" class="row-team-layout">
                     <mu-flex justify-content="start" align-items="center" class="row-team">
                         <mu-scale-transition>
-                            <mu-flex v-show="slide" v-for="i in teams.slice(0,5)" direction="column" justify-content="start" align-items="start" class="team-block"> 
+                            <mu-flex v-for="i in teams.slice(0,5)" v-show="slide" direction="column" justify-content="start" align-items="start" class="team-block"> 
                                 <img class="team-log"  :src="i.logo">          
                                 <span class="round-teamname">[[i.name]]</span>
                                 <span class="round-score">[[ (round>0) ? '本轮得分':'本轮跑分' ]]:</span>
@@ -72,7 +72,7 @@
                     </mu-flex>
                     <mu-flex justify-content="start" align-items="center" class="row-team">
                         <mu-scale-transition>
-                            <mu-flex v-show="slide" v-for="i in teams.slice(5,10)" direction="column" justify-content="start" align-items="start" class="team-block"> 
+                            <mu-flex v-for="i in teams.slice(5,10)" v-show="slide" direction="column" justify-content="start" align-items="start" class="team-block"> 
                                 <img class="team-log" style="width:100%" :src="i.logo">                        
                                 <span class="round-teamname">[[i.name]]</span>
                                 <span class="round-score">[[(round>0) ? '本轮得分':'本轮跑分' ]] </span>
