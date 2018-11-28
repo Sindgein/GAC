@@ -57,7 +57,7 @@
             <mu-flex class="right-pane" justify-content="start" align-items="center" direction="column">
                 <mu-flex class="title-layout" justify-content="center" align-items="center" direction="column">
                     <h1 class="main-title">2018之江全球人工智能大赛</h1>
-                    <p class="subtitle">{% block game %} {% endblock %}([[round]]/5轮)</p>
+                    <p class="subtitle">{% block game %} {% endblock %}([[Math.abs(round)]]/5轮)</p>
                 </mu-flex>
             
                 <mu-flex justify-content="start" align-items="start" direction="column" class="row-team-layout">
@@ -66,7 +66,7 @@
                             <img class="team-log"  :src="i.logo">
                          
                             <span class="round-teamname">[[i.name]]</span>
-                            <span class="round-score">本轮得分:</span>
+                            <span class="round-score">[[ (round<0) ? '本轮得分':'本轮跑分' ]]:</span>
                             <span class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span>       
                         </mu-flex> 
                     </mu-flex>
@@ -75,8 +75,9 @@
                             <img class="team-log" style="width:100%" :src="i.logo">
                          
                             <span class="round-teamname">[[i.name]]</span>
-                            <span class="round-score">本轮得分: </span>
-                            <span class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span>       
+                            <span class="round-score">[[(round<0) ? '本轮得分':'本轮跑分' ]] </span>
+                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
+                            <span v-if="round<0" class="round-rank">[[i.rank_round]]</span>       
                         </mu-flex> 
                     </mu-flex>
                 </mu-flex>
