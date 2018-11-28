@@ -40,19 +40,19 @@ class Teams(models.Model):
         return '%s 第 %s 名' % (self.name, str(self.rank))
 
     def _get_current_info(self, round):
-        if round == 1:
+        if abs(round) == 1:
             return self.rank_round1, self.score_round1, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
-        elif round == 2:
+        elif abs(round) == 2:
             return self.rank_round2, self.score_round2, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
-        elif round == 3:
+        elif abs(round) == 3:
             return self.rank_round3, self.score_round3, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
-        elif round == 4:
+        elif abs(round) == 4:
             return self.rank_round4, self.score_round4, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
-        elif round == 5:
+        elif abs(round) == 5:
             return self.rank_round5, self.score_round5, self.rank, self.score, self.name, self.number, self.trend, self.logo
 
         else:
@@ -73,19 +73,19 @@ class Teams(models.Model):
         }
 
     def set_round_info(self, round, data):
-        if round == 1:
+        if abs(round) == 1:
             self.score, self.score_round1, self.rank, self.rank_round1, self.trend = data
 
-        elif round == 2:
+        elif abs(round) == 2:
             self.score, self.score_round2, self.rank, self.rank_round2, self.trend = data
 
-        elif round == 3:
+        elif abs(round) == 3:
             self.score, self.score_round3, self.rank, self.rank_round3, self.trend = data
 
-        elif round == 4:
+        elif abs(round) == 4:
             self.score, self.score_round4, self.rank, self.rank_round4, self.trend = data
 
-        elif round == 5:
+        elif abs(round) == 5:
             self.score, self.score_round5, self.rank, self.rank_round5, self.trend = data
 
         self.save()
