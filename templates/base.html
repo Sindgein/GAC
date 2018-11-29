@@ -69,8 +69,8 @@
                                     <mu-slide-top-transition>
                                         <mu-flex v-show="change" direction="column" justify-content="start" align-items="start" style="width:100%;height:100%">
                                             <span class="round-score">[[ (round>0) ? '本轮得分':'本轮跑分' ]]:</span>
-                                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':(i.score_round===0?'--':i.score_round)]]</span> 
-                                            <span v-else class="round-rank">[[i.rank_round]]</span>         
+                                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
+                                            <span v-else class="round-rank">[[i.rank_round===0?'--':i.rank_round]]</span>         
                                         </mu-flex>
                                     </mu-slide-top-transition>
                                 </mu-flex>
@@ -88,8 +88,8 @@
                                     <mu-slide-top-transition>
                                         <mu-flex v-show="change" direction="column" justify-content="start" align-items="start" style="width:100%;height:100%">
                                             <span class="round-score">[[ (round>0) ? '本轮得分':'本轮跑分' ]]:</span>
-                                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':(i.score_round===0?'--':i.score_round)]]</span> 
-                                            <span v-else class="round-rank">[[i.rank_round]]</span>         
+                                            <span v-if="round>=0" class="round-rank">[[(i.score_round===0 && round===0)?'#':i.score_round]]</span> 
+                                            <span v-else class="round-rank">[[i.rank_round===0?'--':i.rank_round]]</span>         
                                         </mu-flex>
                                     </mu-slide-top-transition>
                                 </mu-flex>
