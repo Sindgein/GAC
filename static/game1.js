@@ -3,6 +3,8 @@ var app = new Vue({
   delimiters: ['[[', ']]'],
   data: {
     teams: [],
+    teams_row1: [],
+    teams_row2: [],
     rank: [],
     round: '',
     audio: null,
@@ -35,6 +37,9 @@ var app = new Vue({
       $.get('/game1/api/get/ranklist/?round=' + this.round).then(
         r => {
           this.teams = r.data.team_infos;
+          this.teams_row1 = r.data.team_infos.slice(0, 5);
+          this.teams_row2 = r.data.team_infos.slice(5, 10);
+          
           if (this.round * r.data.round < 0) {
             // this.change = !this.change;
             // setTimeout(() => this.change = !this.change, 300)

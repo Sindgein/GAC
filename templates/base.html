@@ -61,7 +61,7 @@
                 <mu-flex justify-content="start" align-items="start" direction="column" class="row-team-layout">
                     <mu-flex justify-content="start" align-items="center" class="row-team">
                        
-                        <mu-flex v-for="i in teams.slice(0,5)"  direction="column" justify-content="start" align-items="start" class="team-block"> 
+                        <mu-flex v-for="i in teams_row1" direction="column" justify-content="start" align-items="start" class="team-block"> 
                             <mu-scale-transition>
                                 <mu-flex v-show="slide" direction="column" justify-content="start" align-items="start" style="width:100%;height:100%">
                                     <img class="team-log"  :src="i.logo">          
@@ -80,7 +80,7 @@
                     </mu-flex>
                     <mu-flex justify-content="start" align-items="center" class="row-team">
 
-                        <mu-flex v-for="i in teams.slice(5,10)"  direction="column" justify-content="start" align-items="start" class="team-block"> 
+                        <mu-flex v-for="i in teams_row2" direction="column" justify-content="start" align-items="start" class="team-block"> 
                             <mu-scale-transition>
                                 <mu-flex v-show="slide" direction="column" justify-content="start" align-items="start" style="width:100%;height:100%">
                                     <img class="team-log"  :src="i.logo">          
